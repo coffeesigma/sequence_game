@@ -79,7 +79,7 @@ grid.addEventListener('click', (e) => {
         // User got it wrong
         grid.style.pointerEvents = 'none'; // Disable further clicks
         const errorRate = 1 - currentStep / totalSteps;
-        testData.push({ grid_size: gridSize, level: totalSteps, error_rate: errorRate, user_info: userInfo });
+        testData.push({ grid_size: gridSize, level: totalSteps, error_rate: errorRate, user_name: userInfo });
         message.style.display = 'block';
         setTimeout(nextStep, 2000); // Add delay before next step
     }
@@ -106,7 +106,7 @@ function nextStep() {
 
 // Send test data to server
 function sendTestData() {
-    fetch('http://3.133.191.166:8080/save', {
+    fetch('http://localhost:8000/save', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(testData),
