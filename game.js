@@ -106,7 +106,7 @@ function nextStep() {
 
 // Send test data to server
 function sendTestData() {
-    fetch('http://localhost:8000/save', {
+    fetch('http://3.133.191.166:8080/save', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(testData),
