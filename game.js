@@ -131,7 +131,7 @@ startButton.addEventListener('click', () => {
 submitUserInfoButton.addEventListener('click', () => {
     const username = document.getElementById('username').value;
     if (username) {
-        userInfo = { username };
+        userInfo = username;
         userInfoForm.style.display = 'none';
         startButton.style.display = 'block';
     } else {
