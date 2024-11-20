@@ -32,7 +32,7 @@ function startLevel() {
     // Update level indicator
     levelIndicator.textContent = `Level ${totalSteps}`;
     levelIndicator.style.display = 'block';
-    message.style.display = 'none';
+    message.style.visibility = 'hidden';
     grid.style.pointerEvents = 'none'; // Disable clicks during sequence display
 
     // Generate random sequence
@@ -45,7 +45,7 @@ function startLevel() {
     }
 
     setTimeout(() => {
-        levelIndicator.style.display = 'none';
+        //levelIndicator.style.display = 'none';
         showSequence();
     }, 1000); // Add delay before showing sequence
 }
@@ -69,6 +69,11 @@ grid.addEventListener('click', (e) => {
     const index = Array.from(grid.children).indexOf(e.target);
     if (index === -1) return;
 
+    setTimeout(() => {
+        grid.children[index].classList.add('highlight');
+        setTimeout(() => grid.children[index].classList.remove('highlight'), 500);
+    }, 0);
+
     if (sequence[currentStep] === index) {
         currentStep++;
         if (currentStep === sequence.length) {
@@ -80,7 +85,7 @@ grid.addEventListener('click', (e) => {
         grid.style.pointerEvents = 'none'; // Disable further clicks
         const errorRate = 1 - currentStep / totalSteps;
         testData.push({ grid_size: gridSize, level: totalSteps, error_rate: errorRate, user_name: userInfo });
-        message.style.display = 'block';
+        message.style.visibility = 'visible';
         setTimeout(nextStep, 2000); // Add delay before next step
     }
 });
