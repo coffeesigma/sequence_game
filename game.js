@@ -11,6 +11,7 @@ let sequence = [];
 let userSequence = [];
 let testData = [];
 let userInfo = {};
+let currentTime = 0;
 
 // Create grid
 function createGrid(size) {
@@ -59,6 +60,8 @@ function showSequence() {
         }, idx * 800);
     });
 
+    currentTime = new Date().getTime();
+
     setTimeout(() => {
         grid.style.pointerEvents = 'auto'; // Enable clicks after sequence display
     }, sequence.length * 800);
@@ -78,14 +81,16 @@ grid.addEventListener('click', (e) => {
         currentStep++;
         if (currentStep === sequence.length) {
             grid.style.pointerEvents = 'none'; // Disable clicks after completing the level
-            testData.push({ grid_size: gridSize, level: totalSteps, error_rate: 0, user_name: userInfo });
+            const runningTime = new Date().getTime() - currentTime;
+            testData.push({ grid_size: gridSize, level: totalSteps, error_rate: 0, user_name: userInfo, run_time: runningTime });
             setTimeout(nextStep, 1000); // Add delay before next step
         }
     } else {
         // User got it wrong
         grid.style.pointerEvents = 'none'; // Disable further clicks
         const errorRate = 1 - currentStep / totalSteps;
-        testData.push({ grid_size: gridSize, level: totalSteps, error_rate: errorRate, user_name: userInfo });
+        const runningTime = new Date().getTime() - currentTime;
+        testData.push({ grid_size: gridSize, level: totalSteps, error_rate: errorRate, user_name: userInfo, run_time: runningTime });
         message.style.visibility = 'visible';
         setTimeout(nextStep, 2000); // Add delay before next step
     }
@@ -94,7 +99,7 @@ grid.addEventListener('click', (e) => {
 // Proceed to next step
 function nextStep() {
     totalSteps++;
-    if (totalSteps > 3) {
+    if (totalSteps > 10) {
         if (gridSize === 3) {
             gridSize = 4; // Move to 4x4
             totalSteps = 1;

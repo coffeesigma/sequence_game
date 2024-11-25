@@ -27,7 +27,8 @@ def init_db():
                 user_name TEXT NOT NULL,
                 grid_size INTEGER NOT NULL,
                 level INTEGER NOT NULL,
-                error_rate FLOAT NOT NULL
+                error_rate FLOAT NOT NULL,
+                run_time INTEGER NOT NULL
             )
         """)
         conn.commit()
@@ -39,6 +40,7 @@ class TestResult(BaseModel):
     grid_size: int
     level: int
     error_rate: float
+    run_time: int
 
 
 @app.on_event("startup")
@@ -57,9 +59,9 @@ async def save_test_data(data: List[TestResult]):
         cursor = conn.cursor()
         for result in data:
             cursor.execute("""
-                INSERT INTO game_results (user_name, grid_size, level, error_rate)
-                VALUES (?, ?, ?, ?)
-            """, (result.user_name, result.grid_size, result.level, result.error_rate))
+                INSERT INTO game_results (user_name, grid_size, level, error_rate, run_time)
+                VALUES (?, ?, ?, ?, ?)
+            """, (result.user_name, result.grid_size, result.level, result.error_rate, result.run_time))
         conn.commit()
 
     # 응답 반환
