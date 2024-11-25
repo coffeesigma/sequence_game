@@ -78,7 +78,7 @@ grid.addEventListener('click', (e) => {
         currentStep++;
         if (currentStep === sequence.length) {
             grid.style.pointerEvents = 'none'; // Disable clicks after completing the level
-            testData.push({ grid_size: gridSize, level: totalSteps, error_rate: errorRate, user_name: userInfo });
+            testData.push({ grid_size: gridSize, level: totalSteps, error_rate: 0, user_name: userInfo });
             setTimeout(nextStep, 1000); // Add delay before next step
         }
     } else {
