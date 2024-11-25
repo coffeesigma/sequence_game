@@ -50,7 +50,7 @@ function startLevel() {
         if (!sequence.includes(randomIndex)) {
             sequence.push(randomIndex);
         }
-        if (sequence.length === 9 && totalSteps === 10) {
+        else if (sequence.length === 9 && totalSteps === 10) {
             sequence.push(randomIndex);
         }
     }
