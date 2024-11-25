@@ -49,6 +49,9 @@
       margin-bottom: 20px;
       visibility: hidden;
     }
+    #mode-input {
+      display: block;
+    }
     button {
       padding: 10px 20px;
       font-size: 16px;
@@ -67,6 +70,13 @@
   <button id="start-game-button" style="display: none;">Start Game</button>
   <div id="message">틀렸습니다!</div>
   <div id="input-message">당신 차례입니다.</div>
+  <div id="mode-input">
+    <label for="game-mode">Select Game Mode:</label>
+    <select id="game-mode">
+      <option value="1">Mode 1</option>
+      <option value="2">Mode 2</option>
+    </select>
+  </div>
   <script type="text/javascript" src="game.js"></script>
 </body>
 </html>

@@ -5,6 +5,8 @@ const message = document.getElementById('message');
 const inputMessage = document.getElementById('input-message');
 const userInfoForm = document.getElementById('user-info');
 const submitUserInfoButton = document.getElementById('submit-user-info');
+const gameModeInput = document.getElementById('mode-input');
+const gameModeSelect = document.getElementById('game-mode');
 let gridSize = 3;
 let totalSteps = 1;
 let currentStep = 0;
@@ -13,6 +15,7 @@ let userSequence = [];
 let testData = [];
 let userInfo = {};
 let currentTime = 0;
+let gameMode = 1;
 
 // Create grid
 function createGrid(size) {
@@ -36,6 +39,7 @@ function startLevel() {
     levelIndicator.style.display = 'block';
     message.style.visibility = 'hidden';
     grid.style.pointerEvents = 'none'; // Disable clicks during sequence display
+    gameModeInput.style.display = 'none';
 
     // Generate random sequence
     const totalCells = gridSize * gridSize;
@@ -47,7 +51,6 @@ function startLevel() {
     }
 
     setTimeout(() => {
-        //levelIndicator.style.display = 'none';
         showSequence();
     }, 1000); // Add delay before showing sequence
 }
@@ -108,15 +111,28 @@ grid.addEventListener('click', (e) => {
 function nextStep() {
     totalSteps++;
     if (totalSteps > 3) {
-        if (gridSize === 3) {
-            gridSize = 4; // Move to 4x4
-            totalSteps = 1;
-        } else if (gridSize === 4) {
-            gridSize = 5; // Move to 5x5
-            totalSteps = 1;
-        } else {
-            sendTestData();
-            return;
+        if (gameMode === 1) {
+            if (gridSize === 3) {
+                gridSize = 4; // Move to 4x4
+                totalSteps = 1;
+            } else if (gridSize === 4) {
+                gridSize = 5; // Move to 5x5
+                totalSteps = 1;
+            } else {
+                sendTestData();
+                return;
+            }
+        } else if (gameMode === 2) {
+            if (gridSize === 5) {
+                gridSize = 4; // Move to 4x4
+                totalSteps = 1;
+            } else if (gridSize === 4) {
+                gridSize = 3; // Move to 3x3
+                totalSteps = 1;
+            } else {
+                sendTestData();
+                return;
+            }
         }
     }
     createGrid(gridSize);
@@ -153,7 +169,9 @@ submitUserInfoButton.addEventListener('click', () => {
         userInfo = username;
         userInfoForm.style.display = 'none';
         startButton.style.display = 'block';
+        gameMode = parseInt(gameModeSelect.value);
+        gridSize = gameMode === 1 ? 3 : 5; // Set grid size based on game mode
     } else {
-        alert('Please enter your name and email.');
+        alert('Please enter your name.');
     }
 });
