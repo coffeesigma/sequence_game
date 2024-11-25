@@ -2,6 +2,7 @@ const grid = document.getElementById('game-grid');
 const startButton = document.getElementById('start-game-button');
 const levelIndicator = document.getElementById('level-indicator');
 const message = document.getElementById('message');
+const inputMessage = document.getElementById('input-message');
 const userInfoForm = document.getElementById('user-info');
 const submitUserInfoButton = document.getElementById('submit-user-info');
 let gridSize = 3;
@@ -57,10 +58,17 @@ function showSequence() {
         setTimeout(() => {
             grid.children[num].classList.add('highlight');
             setTimeout(() => grid.children[num].classList.remove('highlight'), 500);
+            setTimeout(() => {
+                if (idx === sequence.length - 1) {
+                    inputMessage.style.visibility = 'visible';
+                    setTimeout(() => {
+                        inputMessage.style.visibility = 'hidden';
+                    }, 1000);
+                    currentTime = new Date().getTime();
+                }
+            }, 1000);
         }, idx * 800);
     });
-
-    currentTime = new Date().getTime();
 
     setTimeout(() => {
         grid.style.pointerEvents = 'auto'; // Enable clicks after sequence display
