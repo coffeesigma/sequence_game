@@ -39,9 +39,6 @@
       display: none;
     }
     #info-message {
-      font-size: 18px;
-      margin-bottom: 20px;
-      text-align: center;
       display: block;
     }
     #message {
@@ -68,13 +65,29 @@
 <body>
   <h1>Sequence Memory Game</h1>
   <div id="info-message">
-    안녕하세요 휴먼인터페이스미디어 02분반 Team 1 입니다.<br>
-    <p>
-      안내받으신 게임 모드를 선택해주세요.<br>
-      전체화면으로 진행해주시고 마우스를 사용하여 클릭해주세요.<br>
-      각 단계에서 예시 종료 후 안내메세지가 나오면 진행해주세요.<br>
-    </p>
-    3x3, 4x4, 5x5 크기마다 10단계까지 진행하셨다면, 전송완료 메세지를 확인 후 종료해주시면 됩니다.
+    <p><strong>안녕하세요!</strong><br>휴먼인터페이스미디어 02분반 Team 1의 USER STUDY에 참여해 주셔서 감사합니다.</p>
+    <h2 id="-"><strong>참여 안내</strong></h2>
+    <h3 id="1-">1. <strong>환경 준비</strong></h3>
+    <ol>
+      <li><strong>PC와 마우스</strong>를 준비해주세요.  </li>
+      <li>PC에서 해당 사이트에 접속한 뒤, <strong>전체 화면 모드</strong>로 진행해주세요.</li>
+    </ol>
+    <h3 id="2-">2. <strong>게임 시작</strong></h3>
+    <ol>
+      <li>문자로 안내받은 <strong>게임 모드</strong>를 선택하세요. <em>(Mode 1, Mode 2)</em>  </li>
+      <li>본인의 이름을 입력한 후, <strong>Submit</strong> 버튼을 눌러주세요.  </li>
+      <li><strong>Start Game</strong> 버튼을 누르면 게임이 시작됩니다.</li>
+    </ol>
+    <h3 id="3-">3. <strong>게임 진행</strong></h3>
+    <ol>
+      <li><strong>N X N 블럭</strong>에 무작위로 불이 켜집니다. <strong>순서와 위치를 기억</strong>해주세요.  </li>
+      <li>화면에 <strong>‘당신 차례입니다’</strong> 문구가 나타나면, 기억한 <strong>순서대로 블럭을 클릭</strong>합니다.  </li>
+      <li>블럭의 크기는 <strong>3 X 3</strong>, <strong>4 X 4</strong>, <strong>5 X 5</strong>로 변화하며, 각 크기에서 <strong>10단계</strong>를 진행합니다.  <ul>
+      <li>단계가 올라갈수록 기억해야 할 블럭의 개수가 늘어납니다.  </li>
+      </ul>
+      </li>
+      <li>게임이 끝나면 <strong>전송 완료 메시지</strong>가 나타납니다. 반드시 메시지를 확인한 후 게임을 종료해주세요.</li>
+    </ol>
   </div>
   <div id="user-info">
     <input type="text" id="username" placeholder="Enter your name" required>
@@ -83,8 +96,6 @@
   <div id="level-indicator"></div>
   <div id="game-grid"></div>
   <button id="start-game-button" style="display: none;">Start Game</button>
-  <div id="message">틀렸습니다!</div>
-  <div id="input-message">당신 차례입니다.</div>
   <div id="mode-input">
     <label for="game-mode">Select Game Mode:</label>
     <select id="game-mode">
@@ -92,6 +103,8 @@
       <option value="2">Mode 2</option>
     </select>
   </div>
+  <div id="message">틀렸습니다!</div>
+  <div id="input-message">당신 차례입니다.</div>
   <script type="text/javascript" src="game.js"></script>
 </body>
 </html>
