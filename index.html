@@ -38,6 +38,12 @@
       margin-bottom: 20px;
       display: none;
     }
+    #info-message {
+      font-size: 18px;
+      margin-bottom: 20px;
+      text-align: center;
+      display: block;
+    }
     #message {
       font-size: 18px;
       color: red;
@@ -61,6 +67,15 @@
 </head>
 <body>
   <h1>Sequence Memory Game</h1>
+  <div id="info-message">
+    안녕하세요 휴먼인터페이스미디어 02분반 Team 1 입니다.<br>
+    <p>
+      안내받으신 게임 모드를 선택해주세요.<br>
+      전체화면으로 진행해주시고 마우스를 사용하여 클릭해주세요.<br>
+      각 단계에서 예시 종료 후 안내메세지가 나오면 진행해주세요.<br>
+    </p>
+    3x3, 4x4, 5x5 크기마다 10단계까지 진행하셨다면, 전송완료 메세지를 확인 후 종료해주시면 됩니다.
+  </div>
   <div id="user-info">
     <input type="text" id="username" placeholder="Enter your name" required>
     <button id="submit-user-info">Submit</button>

@@ -5,6 +5,7 @@ const message = document.getElementById('message');
 const inputMessage = document.getElementById('input-message');
 const userInfoForm = document.getElementById('user-info');
 const submitUserInfoButton = document.getElementById('submit-user-info');
+const infoMessage = document.getElementById('info-message');
 const gameModeInput = document.getElementById('mode-input');
 const gameModeSelect = document.getElementById('game-mode');
 let gridSize = 3;
@@ -40,6 +41,7 @@ function startLevel() {
     message.style.visibility = 'hidden';
     grid.style.pointerEvents = 'none'; // Disable clicks during sequence display
     gameModeInput.style.display = 'none';
+    infoMessage.style.display = 'none';
 
     // Generate random sequence
     const totalCells = gridSize * gridSize;
@@ -110,7 +112,7 @@ grid.addEventListener('click', (e) => {
 // Proceed to next step
 function nextStep() {
     totalSteps++;
-    if (totalSteps > 3) {
+    if (totalSteps > 10) {
         if (gameMode === 1) {
             if (gridSize === 3) {
                 gridSize = 4; // Move to 4x4
