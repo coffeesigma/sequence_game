@@ -112,7 +112,7 @@ grid.addEventListener('click', (e) => {
 // Proceed to next step
 function nextStep() {
     totalSteps++;
-    if (totalSteps > 10) {
+    if (totalSteps > 9) {
         if (gameMode === 1) {
             if (gridSize === 3) {
                 gridSize = 4; // Move to 4x4
