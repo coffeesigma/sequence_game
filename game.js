@@ -50,6 +50,9 @@ function startLevel() {
         if (!sequence.includes(randomIndex)) {
             sequence.push(randomIndex);
         }
+        if (sequence.length === 9 && totalSteps === 10) {
+            sequence.push(randomIndex);
+        }
     }
 
     setTimeout(() => {
@@ -112,7 +115,7 @@ grid.addEventListener('click', (e) => {
 // Proceed to next step
 function nextStep() {
     totalSteps++;
-    if (totalSteps > 9) {
+    if (totalSteps > 10) {
         if (gameMode === 1) {
             if (gridSize === 3) {
                 gridSize = 4; // Move to 4x4
