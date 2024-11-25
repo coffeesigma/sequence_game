@@ -99,7 +99,7 @@ grid.addEventListener('click', (e) => {
 // Proceed to next step
 function nextStep() {
     totalSteps++;
-    if (totalSteps > 10) {
+    if (totalSteps > 3) {
         if (gridSize === 3) {
             gridSize = 4; // Move to 4x4
             totalSteps = 1;
