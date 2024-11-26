@@ -47,12 +47,7 @@ function startLevel() {
     const totalCells = gridSize * gridSize;
     while (sequence.length < totalSteps) {
         const randomIndex = Math.floor(Math.random() * totalCells);
-        if (!sequence.includes(randomIndex)) {
-            sequence.push(randomIndex);
-        }
-        else if (sequence.length === 9 && totalSteps === 10) {
-            sequence.push(randomIndex);
-        }
+        sequence.push(randomIndex);
     }
 
     setTimeout(() => {
