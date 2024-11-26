@@ -148,7 +148,7 @@ function sendTestData() {
     })
         .then(response => response.json())
         .then(data => {
-            alert('Test completed and data sent successfully!');
+            alert('테스트가 완료되었고 결과가 저장되었습니다! 감사합니다!');
         })
         .catch(error => {
             console.error('Error sending data:', error);
@@ -172,6 +172,6 @@ submitUserInfoButton.addEventListener('click', () => {
         gameMode = parseInt(gameModeSelect.value);
         gridSize = gameMode === 1 ? 3 : 5; // Set grid size based on game mode
     } else {
-        alert('Please enter your name.');
+        alert('이름을 입력홰주세요.');
     }
 });
